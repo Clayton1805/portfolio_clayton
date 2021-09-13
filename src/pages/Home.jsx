@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import video1 from '../images/ola2.mp4';
+import { AnimatePresence, motion } from 'framer-motion';
+import video1 from '../images/ola3.mp4';
 import img1 from '../images/ola.png';
 // import video1 from '../images/JAMBONBON.gif';
 
@@ -25,20 +25,25 @@ const DDD = styled(motion.div)`
 // "https://i.stack.imgur.com/ATB3o.gif"
 const MyComponent = ({ isVisible, img, video }) => (
   <DDD img={img}>
-    {isVisible && (
+    <AnimatePresence>
+      {isVisible && (
       <ImgYouTube
         autoPlay
-        loo
+        loop
+        muted
+        playsInline
         key={video}
         src={video}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
       >
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </ImgYouTube>
-    )}
+      )}
+    </AnimatePresence>
   </DDD>
 );
 
