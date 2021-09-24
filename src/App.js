@@ -10,7 +10,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/sobre" component={About} />
+          <Route exact path="/apresentacao" component={About} />
           <Route exact path="/portfolio" component={Portfolio} />
           <Route exact path="/easter_egg">
             <NotFound />
@@ -18,7 +18,7 @@ function App() {
             // vem da direita com tiros no final você enfrenta o chefe
             }
           </Route>
-          <Route exact path="/" component={() => <Redirect to="/sobre" />} />
+          <Route exact path="/" component={() => <Redirect to="/apresentacao" />} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

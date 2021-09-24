@@ -7,33 +7,34 @@ const height = `${768 / x}px`;
 const width = `${1366 / x}px`;
 const borderRadius = `${50}px`;
 
-const Video = styled(motion.video)`
+const VideoCss = styled(motion.video)`
   width: ${width};
   height: ${height};
   border-radius: ${borderRadius};
 `;
 
-const DivImg = styled(motion.div)`
+const DivImgCss = styled(motion.div)`
   width: ${width};
   height: ${height};
   background-repeat: no-repeat;
+  background-position: center;
   background-size: ${width} ${height};
   background-image: url(${({ img }) => img});
   border-radius: ${borderRadius};
 `;
 
-const ImageVideo = ({
-  isVisibleVideo, img, video,
-}) => {
+const ImageVideo = ({ isVisibleVideo, img, video }) => {
   const $video = useRef(null);
+
   useEffect(() => {
     if ($video.current) $video.current.playbackRate = 2;
   }, [isVisibleVideo, $video]);
+
   return (
-    <DivImg img={img}>
+    <DivImgCss img={img}>
       <AnimatePresence>
         {isVisibleVideo && (
-        <Video
+        <VideoCss
           ref={$video}
           autoPlay
           loop
@@ -49,10 +50,10 @@ const ImageVideo = ({
         >
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
-        </Video>
+        </VideoCss>
         )}
       </AnimatePresence>
-    </DivImg>
+    </DivImgCss>
   );
 };
 

@@ -1,12 +1,17 @@
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
+const heightPx = 70;
+const borderPx = 2;
+
+const HeaderContainerCss = styled.div`
+  height: ${heightPx}px;
+  border-bottom: ${borderPx}px solid black;
   align-items: center;
   align-content: center;
-  background-color: #205527;
+  background-color: white;
   display: flex;
   flex-flow: row nowrap;
-  height: 70px;
   justify-content: space-between;
   margin: auto;
   position: fixed;
@@ -15,18 +20,24 @@ const HeaderContainer = styled.div`
   z-index: 90;
 `;
 
-const DivSpace = styled.div`
-  margin-top: 70px;
+const DivSpaceCss = styled.div`
+  margin-top: ${heightPx + borderPx}px;
 `;
 
 function BodyHeader({ children }) {
+  const history = useHistory();
   return (
-    <DivSpace>
-      <HeaderContainer>
-        <h1>Header</h1>
-      </HeaderContainer>
+    <DivSpaceCss>
+      <HeaderContainerCss>
+        <div />
+        <div>
+          <button onClick={() => history.push('/apresentacao')} type="button">Apresentação</button>
+          <button onClick={() => history.push('/portfolio')} type="button">portfolio</button>
+          <button type="button">Fale comigo</button>
+        </div>
+      </HeaderContainerCss>
       {children}
-    </DivSpace>
+    </DivSpaceCss>
   );
 }
 
