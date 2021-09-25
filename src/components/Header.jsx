@@ -1,5 +1,10 @@
+/* eslint-disable import/no-cycle */
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { ImgCss, ContainerFlexWrapCss } from '../pages/About';
+import linkedin from '../images/linkedin.png';
+import gitHub from '../images/gitHub.png';
 
 const heightPx = 70;
 const borderPx = 2;
@@ -29,11 +34,19 @@ function BodyHeader({ children }) {
   return (
     <DivSpaceCss>
       <HeaderContainerCss>
-        <div />
+        <ContainerFlexWrapCss>
+          <ImgCss size={40} />
+          <a href="https://www.linkedin.com/in/claytonmiguel/" target="_ blank">
+            <img src={linkedin} alt="linkedin" />
+          </a>
+          <a href="https://github.com/Clayton1805" target="_ blank">
+            <img src={gitHub} alt="gitHub" />
+          </a>
+        </ContainerFlexWrapCss>
         <div>
           <button onClick={() => history.push('/apresentacao')} type="button">Apresentação</button>
           <button onClick={() => history.push('/portfolio')} type="button">portfolio</button>
-          <button type="button">Fale comigo</button>
+          <button onClick={() => history.push('/faleComigo')} type="button">Fale comigo</button>
         </div>
       </HeaderContainerCss>
       {children}

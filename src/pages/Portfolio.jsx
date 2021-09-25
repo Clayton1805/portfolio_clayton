@@ -7,7 +7,10 @@ function Portfolio() {
   return (
     <BodyHeader>
       <div>
-        <CardProject img={img1} video={video1} />
+        <CardProject img={img1} video={video1} id="cavaleiro1" />
+        <CardProject img={img1} video={video1} id="cavaleiro2" />
+        <CardProject img={img1} video={video1} id="cavaleiro3" />
+        <CardProject img={img1} video={video1} id="cavaleiro4" />
       </div>
     </BodyHeader>
   );

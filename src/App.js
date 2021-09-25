@@ -1,9 +1,10 @@
 import {
   Route, Switch, BrowserRouter, Redirect,
 } from 'react-router-dom';
-import About from './pages/About';
+import { About } from './pages/About';
 import NotFound from './pages/NotFound';
 import Portfolio from './pages/Portfolio';
+import TalkToMe from './pages/TalkToMe';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/apresentacao" component={About} />
-          <Route exact path="/portfolio" component={Portfolio} />
+          <Route exact path={['/portfolio', '/portfolio/:id']} component={Portfolio} />
+          <Route exact path="/faleComigo" component={TalkToMe} />
           <Route exact path="/easter_egg">
             <NotFound />
             {// foto do clayton sendo uma navinha em que você destruir os bugs que

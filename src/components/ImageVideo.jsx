@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const x = 3.5;
 const height = `${768 / x}px`;
-const width = `${1366 / x}px`;
-const borderRadius = `${50}px`;
+export const width = `${1366 / x}px`;
+export const borderRadius = `${3}px`;
 
 const VideoCss = styled(motion.video)`
   width: ${width};
@@ -23,7 +23,7 @@ const DivImgCss = styled(motion.div)`
   border-radius: ${borderRadius};
 `;
 
-const ImageVideo = ({ isVisibleVideo, img, video }) => {
+export const ImageVideo = ({ isVisibleVideo, img, video }) => {
   const $video = useRef(null);
 
   useEffect(() => {
@@ -56,5 +56,3 @@ const ImageVideo = ({ isVisibleVideo, img, video }) => {
     </DivImgCss>
   );
 };
-
-export default ImageVideo;
