@@ -17,7 +17,7 @@ const HeaderContainerCss = styled.header`
   background-color: white;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: auto;
   position: fixed;
   top: 0px;

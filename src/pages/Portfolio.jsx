@@ -53,13 +53,13 @@ const Div1 = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-left: 2%;
-  margin-right: 2%;
-  @media (max-width: 400px) {
+  /* margin-left: 2%;
+  margin-right: 2%; */
+  /* @media (max-width: 400px) { */
     /* max-width: 300px !important; */
-    margin-left: 0px;
+    /* margin-left: 0px;
     margin-right: 0px;
-  }
+  } */
 `;
 
 // const ImagTeste = styled.img`

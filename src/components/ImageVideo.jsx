@@ -3,30 +3,39 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 // const x = 3.5;
 const height = `${225}px`;
-export const width = `${360}px`;
+const width = `${400}px`;
 export const borderRadius = `${3}px`;
 
-const VideoCss = styled(motion.img)`
-  width: ${width};
-  height: ${height};
+const GifCss = styled(motion.img)`
+  width: 100%;
+  /* height: ${height}; */
+  border-radius: ${borderRadius};
+  position: absolute;
+  left: 0;
+  z-index: 50;
+`;
+
+const ImgCss = styled(motion.img)`
+  width: 100%;
+  /* height: ${height}; */
+  /* background-repeat: no-repeat;
+  background-position: center;
+  background-size: ${width} ${height};
+  background-image: url(${({ img }) => img}); */
   border-radius: ${borderRadius};
 `;
 
-const DivImgCss = styled(motion.div)`
-  width: ${width};
-  height: ${height};
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: ${width} ${height};
-  background-image: url(${({ img }) => img});
-  border-radius: ${borderRadius};
+const DivCss = styled.div`
+  position: relative;
+  width: 100%;
 `;
 
 export const ImageVideo = ({ isVisibleVideo, img, video }) => (
-  <DivImgCss img={img}>
+  <DivCss>
+    <ImgCss src={img} />
     <AnimatePresence>
       {isVisibleVideo && (
-      <VideoCss
+      <GifCss
         key={video}
         src={video}
         alt={video}
@@ -37,5 +46,5 @@ export const ImageVideo = ({ isVisibleVideo, img, video }) => (
       />
       )}
     </AnimatePresence>
-  </DivImgCss>
+  </DivCss>
 );

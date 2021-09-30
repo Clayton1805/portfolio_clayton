@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ImageVideo, width, borderRadius } from './ImageVideo';
+import { ImageVideo, borderRadius } from './ImageVideo';
+
+// const width = `${400}px`;
 
 const BodyCardProjectCss = styled.div`
-  width: ${width};
+  width: 40%;
   border-radius: ${borderRadius};
   border: 1px solid black;
   margin: 5px;
+  @media (min-width: ${360 + 2 + 1}px) {
+    min-width: 360px;
+  }
+  @media (max-width: ${360 + 2 + 1}px) {
+    min-width: 315px;
+  }
 `;
 
 const Div100porcento = styled.div`
