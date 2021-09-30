@@ -9,7 +9,7 @@ import gitHub from '../images/gitHub.png';
 const heightPx = 70;
 const borderPx = 2;
 
-const HeaderContainerCss = styled.div`
+const HeaderContainerCss = styled.header`
   height: ${heightPx}px;
   border-bottom: ${borderPx}px solid black;
   align-items: center;
@@ -21,12 +21,15 @@ const HeaderContainerCss = styled.div`
   margin: auto;
   position: fixed;
   top: 0px;
+  /* right: 0px;
+  left: 0px; */
   width: 100%;
   z-index: 90;
 `;
 
 const DivSpaceCss = styled.div`
-  margin-top: ${heightPx + borderPx}px;
+  padding-top: ${heightPx + borderPx}px;
+  width: 100%;
 `;
 
 function BodyHeader({ children }) {
@@ -43,11 +46,11 @@ function BodyHeader({ children }) {
             <img src={gitHub} alt="gitHub" />
           </a>
         </ContainerFlexWrapCss>
-        <div>
+        <ContainerFlexWrapCss>
           <button onClick={() => history.push('/apresentacao')} type="button">Apresentação</button>
           <button onClick={() => history.push('/portfolio')} type="button">portfolio</button>
           <button onClick={() => history.push('/faleComigo')} type="button">Fale comigo</button>
-        </div>
+        </ContainerFlexWrapCss>
       </HeaderContainerCss>
       {children}
     </DivSpaceCss>

@@ -7,6 +7,7 @@ const BodyCardProjectCss = styled.div`
   width: ${width};
   border-radius: ${borderRadius};
   border: 1px solid black;
+  margin: 5px;
 `;
 
 const Div100porcento = styled.div`
@@ -20,24 +21,30 @@ const Div100porcento = styled.div`
   z-index: 100;
 `;
 
-function CardProject({ img, video, id }) {
+function CardProject({
+  project: {
+    name,
+    roles,
+    images,
+  },
+}) {
   const history = useHistory();
   const { id: idRoute } = useParams();
   const [visibleVideo, setVisibleVideo] = useState(false);
   const [detailsProject, setDetailsProject] = useState(false);
 
   useEffect(() => {
-    if (detailsProject) history.push(`/portfolio/${id}`);
+    if (detailsProject) history.push(`/portfolio/${name}`);
     else history.push('/portfolio');
   }, [detailsProject]);
 
-  useEffect(() => (idRoute && (idRoute === id)) && setDetailsProject(true), []);
+  useEffect(() => (idRoute && (idRoute === name)) && setDetailsProject(true), []);
 
   return (
     <>
       {detailsProject && (
         <Div100porcento>
-          <h1>{id}</h1>
+          <h1>{name}</h1>
           <button
             type="button"
             onClick={() => {
@@ -53,11 +60,13 @@ function CardProject({ img, video, id }) {
         onMouseLeave={() => setVisibleVideo(false)}
         onClick={() => setDetailsProject(true)}
       >
-        <ImageVideo
-          img={img}
-          video={video}
-          isVisibleVideo={visibleVideo}
-        />
+        { roles === '1' && (
+          <ImageVideo
+            img={images[0].resolutions.mobile.url}
+            video={images[1].resolutions.mobile.url}
+            isVisibleVideo={visibleVideo}
+          />
+        )}
         <div>
           <h2>titulo</h2>
           descrição do projeto hvdrbszdjndkfjx
