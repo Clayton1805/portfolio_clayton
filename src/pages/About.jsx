@@ -8,13 +8,9 @@ import gitHub from '../images/gitHub.png';
 import whatsapp from '../images/whatsapp.png';
 import { PortfolioContext } from '../context/PortfolioContext';
 
-export const ImgCss = styled.div`
+export const ImgCss = styled.img`
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: ${({ size }) => (size)}px;
-  background-image: url(${({ img }) => img});
   border-radius: 50%;
   margin: 10px;
 `;
@@ -49,7 +45,7 @@ export const About = () => {
     return (
       <>
         <ContainerFlexWrapCss>
-          <ImgCss img={image} size={300} />
+          <ImgCss src={image} size={300} />
           <div>
             <h1>{ name }</h1>
             <p>{ headline }</p>

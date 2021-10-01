@@ -1,27 +1,18 @@
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
-// const x = 3.5;
-const height = `${225}px`;
-const width = `${400}px`;
 export const borderRadius = `${3}px`;
 
 const GifCss = styled(motion.img)`
   width: 100%;
-  /* height: ${height}; */
   border-radius: ${borderRadius};
   position: absolute;
   left: 0;
   z-index: 50;
 `;
 
-const ImgCss = styled(motion.img)`
+export const Img2Css = styled.img`
   width: 100%;
-  /* height: ${height}; */
-  /* background-repeat: no-repeat;
-  background-position: center;
-  background-size: ${width} ${height};
-  background-image: url(${({ img }) => img}); */
   border-radius: ${borderRadius};
 `;
 
@@ -32,7 +23,7 @@ const DivCss = styled.div`
 
 export const ImageVideo = ({ isVisibleVideo, img, video }) => (
   <DivCss>
-    <ImgCss src={img} />
+    <Img2Css src={img} />
     <AnimatePresence>
       {isVisibleVideo && (
       <GifCss

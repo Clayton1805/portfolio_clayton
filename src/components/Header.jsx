@@ -2,7 +2,7 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ImgCss, ContainerFlexWrapCss } from '../pages/About';
+import { ContainerFlexWrapCss } from '../pages/About';
 import linkedin from '../images/linkedin.png';
 import gitHub from '../images/gitHub.png';
 
@@ -38,7 +38,7 @@ function BodyHeader({ children }) {
     <DivSpaceCss>
       <HeaderContainerCss>
         <ContainerFlexWrapCss>
-          <ImgCss size={40} />
+          {/* <ImgCss size={40} /> */}
           <a href="https://www.linkedin.com/in/claytonmiguel/" target="_ blank">
             <img src={linkedin} alt="linkedin" />
           </a>
