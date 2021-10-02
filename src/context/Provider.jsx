@@ -10,7 +10,6 @@ function Provider({ children }) {
       'https://gitconnected.com/v1/portfolio/clayton1805',
     )
       .then(({ data }) => {
-        console.log('data', data);
         setGitConnected(data);
       })
       .catch((error) => console.log({ error }));

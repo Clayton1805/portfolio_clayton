@@ -32,6 +32,12 @@ const DivSpaceCss = styled.div`
   width: 100%;
 `;
 
+const ContainerNav = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+`;
+
 function BodyHeader({ children }) {
   const history = useHistory();
   return (
@@ -46,11 +52,11 @@ function BodyHeader({ children }) {
             <img src={gitHub} alt="gitHub" />
           </a>
         </ContainerFlexWrapCss>
-        <ContainerFlexWrapCss>
+        <ContainerNav>
           <button onClick={() => history.push('/apresentacao')} type="button">Apresentação</button>
           <button onClick={() => history.push('/portfolio')} type="button">portfolio</button>
           <button onClick={() => history.push('/faleComigo')} type="button">Fale comigo</button>
-        </ContainerFlexWrapCss>
+        </ContainerNav>
       </HeaderContainerCss>
       {children}
     </DivSpaceCss>
