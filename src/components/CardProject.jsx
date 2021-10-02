@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageVideo, borderRadius, Img2Css } from './ImageVideo';
+import ProjectDetails from './ProjectDetails';
 
 // const width = `${400}px`;
 
@@ -10,17 +11,6 @@ const BodyCardProjectCss = styled.div`
   width: 100%;
   border-radius: ${borderRadius};
   border: 1px solid black;
-`;
-
-const Div100porcento = styled.div`
-  height: 100%;
-  min-width: 100%;
-  opacity: 0.5;
-  background-color: aqua;
-  margin: auto;
-  position: fixed;
-  top: 0px;
-  z-index: 100;
 `;
 
 const DivWidth = styled.div`
@@ -35,25 +25,26 @@ const DivWidth = styled.div`
 `;
 
 function CardProject({
-  project: {
+  project,
+}) {
+  const {
     name,
     roles,
     images,
     summary,
     displayName,
-  },
-}) {
+  } = project;
   const history = useHistory();
   const { id: idRoute } = useParams();
   const [visibleVideo, setVisibleVideo] = useState(false);
-  const [detailsProject, setDetailsProject] = useState(false);
+  const [projectDetails, setProjectDetails] = useState(false);
 
   useEffect(() => {
-    if (detailsProject) history.push(`/portfolio/${name}`);
+    if (projectDetails) history.push(`/portfolio/${name}`);
     else history.push('/portfolio');
-  }, [detailsProject]);
+  }, [projectDetails]);
 
-  useEffect(() => (idRoute && (idRoute === name)) && setDetailsProject(true), []);
+  useEffect(() => (idRoute && (idRoute === name)) && setProjectDetails(true), []);
 
   const imagesSwitch = () => {
     switch (true) {
@@ -78,24 +69,14 @@ function CardProject({
 
   return (
     <>
-      {detailsProject && (
-        <Div100porcento>
-          <h1>{name}</h1>
-          <button
-            type="button"
-            onClick={() => {
-              setDetailsProject(false);
-            }}
-          >
-            X
-          </button>
-        </Div100porcento>
+      {projectDetails && (
+        <ProjectDetails project={project} setProjectDetails={setProjectDetails} />
       )}
       <DivWidth>
         <BodyCardProjectCss
           onMouseEnter={() => setVisibleVideo(true)}
           onMouseLeave={() => setVisibleVideo(false)}
-          onClick={() => setDetailsProject(true)}
+          onClick={() => setProjectDetails(true)}
         >
         {imagesSwitch()}
           {/* { images.length === 0

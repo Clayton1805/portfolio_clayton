@@ -20,7 +20,7 @@ function TalkToMe() {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log('form.current', form.current);
+
     emailjs.sendForm('service_chr2x1b', 'template_ozn033n', form.current, 'user_bEJlgdvwBdj1xIia2wuiT')
       .then((result) => {
         console.log(result.text);
