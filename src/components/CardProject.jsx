@@ -10,17 +10,23 @@ import ProjectDetails from './ProjectDetails';
 const BodyCardProjectCss = styled.div`
   width: 100%;
   border-radius: ${borderRadius};
-  border: 1px solid black;
+  border: 1px solid rgba(0,0,0,.125);
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  cursor: pointer;
+  :hover {
+    border: 1px solid rgba(0,0,0,.125);
+  }
 `;
 
 const DivWidth = styled.div`
-  width: 40%;
-  margin: 5px;
-  @media (min-width: ${360 + 2 + 1}px) {
+  margin: 8px 0px;
+  padding: 0px 8px;
+  @media (min-width: ${751}px) {
     min-width: 360px;
+    width: 40%;
   }
-  @media (max-width: ${360 + 2 + 1}px) {
-    min-width: 315px;
+  @media (max-width: ${751}px) {
+    width: 100%;
   }
 `;
 

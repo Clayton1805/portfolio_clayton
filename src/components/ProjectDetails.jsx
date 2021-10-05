@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+// import { useRef, useEffect } from 'react';
 
 const Div100porcento = styled.div`
   width: 100%;
@@ -27,7 +28,7 @@ const ContainerProjectDetailsCss = styled(SimpleBar)`
   .simplebar-content-wrapper:focus {
     outline: none;
   }
-
+  padding: 2px;
 `;
 
 function ProjectDetails({
@@ -39,40 +40,45 @@ function ProjectDetails({
   } = project;
 
   return (
-    <Div100porcento>
+    <Div100porcento onClick={(e) => {
+      if (e.currentTarget === e.target) {
+        setProjectDetails(false);
+      }
+    }}
+    >
       <ContainerProjectDetailsCss>
-          <button
-            type="button"
-            onClick={() => {
-              setProjectDetails(false);
-            }}
-          >
-            X
-          </button>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
-          <h1>{displayName}</h1>
+        <button
+          type="button"
+          onClick={() => {
+            setProjectDetails(false);
+          }}
+        >
+          X
+        </button>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
+        <h1>{displayName}</h1>
       </ContainerProjectDetailsCss>
     </Div100porcento>
   );
