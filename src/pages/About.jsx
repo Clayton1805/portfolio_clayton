@@ -26,11 +26,31 @@ const DivRedesCss = styled.div`
 export const ContainerFlexWrapCss = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const ContainerFlexWrap2Css = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const ContainerAboutCss = styled.div`
   padding: 0px 5px;
   white-space: pre-wrap;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  /* max-width: 800px; */
+`;
+
+const TextSummaryCss = styled.p`
+  text-align: center;
+`;
+
+const ContainerSumaryCss = styled.div`
+  align-self: center;
+  margin: 15px;
 `;
 
 export const About = () => {
@@ -49,9 +69,9 @@ export const About = () => {
 
     return (
       <ContainerAboutCss>
-        <ContainerFlexWrapCss>
+        <ContainerFlexWrap2Css>
           <ImgCss src={image} size={300} />
-          <div>
+          <ContainerSumaryCss>
             <h1>{ name }</h1>
             <p>{ headline }</p>
             <DivRedesCss>
@@ -77,9 +97,9 @@ export const About = () => {
                 <img src={whatsapp} alt="whatsapp" />
               </a>
             </DivRedesCss>
-          </div>
-        </ContainerFlexWrapCss>
-        <p dangerouslySetInnerHTML={{ __html: summary }} />
+          </ContainerSumaryCss>
+        </ContainerFlexWrap2Css>
+        <TextSummaryCss dangerouslySetInnerHTML={{ __html: summary }} />
       </ContainerAboutCss>
     );
   };
