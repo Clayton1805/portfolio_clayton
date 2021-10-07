@@ -47,8 +47,8 @@ const ButtonNavCss = styled.button`
   }
   border: 0px;
   ${({ select }) => select && `
-  border-bottom: 4px solid rgba(0,0,0,0.2);
-  border-top: 4px solid rgba(0,0,0,0.2);
+    border-bottom: 4px solid rgba(0,0,0,0.2);
+    border-top: 4px solid rgba(0,0,0,0.2);
   `}
   padding: 8px 10px;
   margin: 0px 7px;

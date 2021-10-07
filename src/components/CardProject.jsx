@@ -18,7 +18,7 @@ const BodyCardProjectCss = styled.div`
   }
 `;
 
-const DivWidth = styled.div`
+const DivWidthCss = styled.div`
   margin: 8px 0px;
   padding: 0px 8px;
   @media (min-width: ${751}px) {
@@ -28,6 +28,11 @@ const DivWidth = styled.div`
   @media (max-width: ${751}px) {
     width: 100%;
   }
+`;
+
+const ContainerTextCardCss = styled.div`
+  margin: 8px;
+  text-align: justify;
 `;
 
 function CardProject({
@@ -78,29 +83,19 @@ function CardProject({
       {projectDetails && (
         <ProjectDetails project={project} setProjectDetails={setProjectDetails} />
       )}
-      <DivWidth>
+      <DivWidthCss>
         <BodyCardProjectCss
           onMouseEnter={() => setVisibleVideo(true)}
           onMouseLeave={() => setVisibleVideo(false)}
           onClick={() => setProjectDetails(true)}
         >
-        {imagesSwitch()}
-          {/* { images.length === 0
-            && (<Img2Css src="https://project-images.gitconnectedcontent.com/f985bf1e-df9e-4ade-8f0e-93d0402974be-mobile" />)}
-          {(images.length !== 0 && roles === '1') ? (
-            <ImageVideo
-              img={images[0].resolutions.mobile.url}
-              video={images[1].resolutions.mobile.url}
-              isVisibleVideo={visibleVideo}
-            />
-          ) : (<Img2Css src={images[0].resolutions.mobile.url} />)} */}
-            {/* : (<Img2Css src={images[0].resolutions.mobile.url} />)} */}
-          <div>
+          {imagesSwitch()}
+          <ContainerTextCardCss>
             <h2>{displayName}</h2>
             <p>{summary}</p>
-          </div>
+          </ContainerTextCardCss>
         </BodyCardProjectCss>
-      </DivWidth>
+      </DivWidthCss>
     </>
   );
 }

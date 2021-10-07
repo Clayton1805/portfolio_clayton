@@ -31,6 +31,7 @@ const ContainerProjectDetailsCss = styled(SimpleBar)`
   }
   padding: 2px;
   margin: 2px;
+  text-align: justify;
   @media (min-width: 800px) {
     width: 90%;
   }
@@ -90,7 +91,7 @@ const ImgTechnologiesCss = styled.img`
 `;
 
 const ContainerContentCss = styled.div`
-  margin: 0px 5px;
+  margin: 0px 8px;
 `;
 
 const ImageXCss = styled.img`
