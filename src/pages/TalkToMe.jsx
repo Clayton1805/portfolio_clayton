@@ -33,7 +33,6 @@ function TalkToMe() {
   return (
     <BodyHeader>
       <div>
-        <h1>FALE COMIGO</h1>
         <FormFlexColumnCss ref={form} onSubmit={sendEmail}>
           <label htmlFor="name">
             Name

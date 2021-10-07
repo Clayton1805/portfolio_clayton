@@ -28,6 +28,11 @@ export const ContainerFlexWrapCss = styled.div`
   flex-wrap: wrap;
 `;
 
+const ContainerAboutCss = styled.div`
+  padding: 0px 5px;
+  white-space: pre-wrap;
+`;
+
 export const About = () => {
   const {
     gitConnected,
@@ -43,7 +48,7 @@ export const About = () => {
     } = gitConnected.basics;
 
     return (
-      <>
+      <ContainerAboutCss>
         <ContainerFlexWrapCss>
           <ImgCss src={image} size={300} />
           <div>
@@ -74,8 +79,8 @@ export const About = () => {
             </DivRedesCss>
           </div>
         </ContainerFlexWrapCss>
-        <p>{summary}</p>
-      </>
+        <p dangerouslySetInnerHTML={{ __html: summary }} />
+      </ContainerAboutCss>
     );
   };
 
