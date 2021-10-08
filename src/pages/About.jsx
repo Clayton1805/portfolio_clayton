@@ -9,8 +9,8 @@ import whatsapp from '../images/whatsapp.png';
 import { PortfolioContext } from '../context/PortfolioContext';
 
 export const ImgCss = styled.img`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+  max-width: ${({ size }) => size}px;
+  width: 100%;
   border-radius: 50%;
   margin: 10px;
 `;
