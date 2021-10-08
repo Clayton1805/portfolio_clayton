@@ -1,5 +1,7 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/style-prop-object */
+import { motion } from 'framer-motion';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import CardProject from '../components/CardProject';
@@ -49,7 +51,7 @@ import { PortfolioContext } from '../context/PortfolioContext';
 //   }
 // }
 
-const Div1 = styled.div`
+const Div1Css = styled(motion.div)`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -85,15 +87,35 @@ function Portfolio() {
     gitConnected,
   } = useContext(PortfolioContext);
 
+  const container = {
+    visible: {
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
   return (
     <BodyHeader>
-      <Div1>
-        {gitConnected && gitConnected.projects
-          .map((project) => <CardProject key={project.name} project={project} />)}
-        {/* <CardProject img={img1} video={video1} id="cavaleiro2" />
+
+      {gitConnected && (
+      <Div1Css
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        {gitConnected.projects
+          .map((project) => (
+            <CardProject project={project} />
+          ))}
+      </Div1Css>
+      )}
+      {/*  */}
+      {/* <CardProject img={img1} video={video1} id="cavaleiro2" />
         <CardProject img={img1} video={video1} id="cavaleiro3" />
         <CardProject img={img1} video={video1} id="cavaleiro4" /> */}
-      </Div1>
+
     </BodyHeader>
   );
 }

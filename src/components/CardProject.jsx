@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-indent */
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -18,7 +19,7 @@ const BodyCardProjectCss = styled.div`
   }
 `;
 
-const DivWidthCss = styled.div`
+const DivWidthCss = styled(motion.div)`
   margin: 8px 0px;
   padding: 0px 8px;
   @media (min-width: ${751}px) {
@@ -78,12 +79,20 @@ function CardProject({
     }
   };
 
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
     <>
       {projectDetails && (
         <ProjectDetails project={project} setProjectDetails={setProjectDetails} />
       )}
-      <DivWidthCss>
+      <DivWidthCss variants={item} key={name}>
         <BodyCardProjectCss
           onMouseEnter={() => setVisibleVideo(true)}
           onMouseLeave={() => setVisibleVideo(false)}
