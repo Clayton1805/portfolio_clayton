@@ -44,13 +44,13 @@ const TextareaCss = styled.textarea`
 const InputSubmitCss = styled.input`
   border-radius: 10px;
   color: rgb(248, 249, 250);
-  border: 2px solid #228B22;
-  background-color: #228B22;
+  border: 2px solid #239223;
+  background-color: #239223;
   width: 150px;
   padding: 8px 0px;
   cursor: pointer;
   :hover {
-    background-color: #389e38;
+    background-color: #228B22;
   }
   :focus {
     outline: none;
