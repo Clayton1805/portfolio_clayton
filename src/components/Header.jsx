@@ -94,7 +94,7 @@ function BodyHeader({ children }) {
   const buttonNav = useRef(null);
 
   const [navbar, setNavbar] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.matchMedia('(min-width: 768px)').matches);
 
   useEffect(() => {
     const handler = (e) => setIsDesktop(e.matches);
