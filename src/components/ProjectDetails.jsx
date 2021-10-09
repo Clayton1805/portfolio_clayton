@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import rightArrow from '../images/rightArrow.png';
+import github from '../images/github-sign.png';
+import arrowLink from '../images/arrowLink.png';
 import XImage from '../images/X.png';
 
 const Div100porcento = styled.div`
@@ -103,6 +105,10 @@ const ImageXCss = styled.img`
   width: 28px;
 `;
 
+const Link = styled.a`
+  margin: 5px;
+`;
+
 function ProjectDetails({
   project,
   setProjectDetails,
@@ -114,6 +120,8 @@ function ProjectDetails({
     images,
     languages,
     libraries,
+    githubUrl,
+    url,
   } = project;
 
   const [carrosselPosition, setCarrosselPosition] = useState(0);
@@ -171,6 +179,21 @@ function ProjectDetails({
         <ContainerContentCss>
 
           <h1>{displayName}</h1>
+
+          <Link
+            href={githubUrl}
+            target="_ blank"
+          >
+            <img src={github} alt="github link" />
+          </Link>
+          {url && (
+            <Link
+              href={url}
+              target="_ blank"
+            >
+              <img src={arrowLink} alt="github link" />
+            </Link>
+          )}
 
           {summary && (
             <>

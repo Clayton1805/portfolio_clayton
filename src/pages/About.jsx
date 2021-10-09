@@ -36,16 +36,20 @@ const ContainerFlexWrap2Css = styled.div`
 `;
 
 const ContainerAboutCss = styled.div`
-  padding: 0px 5px;
-  white-space: pre-wrap;
+  /* padding: 0px 5px; */
+  /* white-space: pre-wrap;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto; */
   width: 100%;
   /* max-width: 800px; */
 `;
 
 const TextSummaryCss = styled.p`
   text-align: center;
+  /* margin: 4px; */
+  font-size: 1rem;
+  width: 100%;
+  /* padding: 0px 10px; */
 `;
 
 const ContainerSumaryCss = styled.div`
@@ -66,7 +70,6 @@ export const About = () => {
       profiles,
       summary,
     } = gitConnected.basics;
-
     return (
       <ContainerAboutCss>
         <ContainerFlexWrap2Css>
@@ -99,11 +102,17 @@ export const About = () => {
             </DivRedesCss>
           </ContainerSumaryCss>
         </ContainerFlexWrap2Css>
-        <TextSummaryCss dangerouslySetInnerHTML={{ __html: summary }} />
+        {/* <TextSummaryCss dangerouslySetInnerHTML={{ __html: summary }} /> */}
+        {summary.split('\n').map((text) => (
+          <TextSummaryCss>
+            {
+              text.split('**').map((t, i) => ((i % 2 !== 0) ? <b>{t}</b> : t))
+            }
+          </TextSummaryCss>
+        ))}
       </ContainerAboutCss>
     );
   };
-
   return (
     <BodyHeader>
       {gitConnected && container()}

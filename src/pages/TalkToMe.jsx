@@ -10,6 +10,7 @@ const FormFlexColumnCss = styled.form`
   flex-direction: column;
   align-items: center;
   align-content: center;
+  /* width: 100%; */
 `;
 
 const InputTextCss = styled.input`
@@ -17,11 +18,11 @@ const InputTextCss = styled.input`
   /* background-color: darken(0.20, #1261A0); */
   border-radius: 10px;
   font-size: 14pt;
-  height: 30px;
+  /* height: 30px; */
   margin: 5px 0px;
   text-align: center;
   max-width: 380px;
-  width: 100%;
+  width: 95%;
   :focus {
     outline: none;
   }
@@ -34,7 +35,7 @@ const TextareaCss = styled.textarea`
   height: 200px;
   margin: 5px 0px;
   max-width: 380px;
-  width: 100%;
+  width: 95%;
   resize: none;
   :focus {
     outline: none;
@@ -48,6 +49,7 @@ const InputSubmitCss = styled.input`
   background-color: #239223;
   width: 150px;
   padding: 8px 0px;
+  margin: 5px 0px;
   cursor: pointer;
   :hover {
     background-color: #228B22;
@@ -61,6 +63,10 @@ const LabelCss = styled.label`
   font-size: 14pt;
   font-weight: 900;
   text-align: center;
+`;
+
+const Div = styled.div`
+  width: 100%;
 `;
 
 function TalkToMe() {
@@ -80,7 +86,7 @@ function TalkToMe() {
 
   return (
     <BodyHeader>
-      <div>
+      <Div>
         <FormFlexColumnCss ref={form} onSubmit={sendEmail}>
           <LabelCss htmlFor="name">
             Nome
@@ -106,7 +112,7 @@ function TalkToMe() {
           <TextareaCss id="message" name="message" />
           <InputSubmitCss type="submit" value="Enviar" />
         </FormFlexColumnCss>
-      </div>
+      </Div>
     </BodyHeader>
   );
 }
