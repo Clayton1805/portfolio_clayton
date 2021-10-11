@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent */
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageVideo, borderRadius, Img2Css } from './ImageVideo';
@@ -49,14 +49,14 @@ function CardProject({
   const history = useHistory();
   const { id: idRoute } = useParams();
   const [visibleVideo, setVisibleVideo] = useState(false);
-  const [projectDetails, setProjectDetails] = useState(false);
+  // const [projectDetails, setProjectDetails] = useState(false);
 
-  useEffect(() => {
-    if (projectDetails) history.push(`/portfolio/${name}`);
-    else history.push('/portfolio');
-  }, [projectDetails]);
+  // useEffect(() => {
+  //   if (projectDetails) history.push(`/portfolio/${name}`);
+  //   else history.push('/portfolio');
+  // }, [projectDetails]);
 
-  useEffect(() => (idRoute && (idRoute === name)) && setProjectDetails(true), []);
+  // useEffect(() => (idRoute && (idRoute === name)) && setProjectDetails(true), []);
 
   const imagesSwitch = () => {
     switch (true) {
@@ -91,14 +91,14 @@ function CardProject({
 
   return (
     <>
-      {projectDetails && (
-        <ProjectDetails project={project} setProjectDetails={setProjectDetails} />
+      {(idRoute === name) && (
+        <ProjectDetails project={project} />
       )}
       <DivWidthCss variants={item} key={name}>
         <BodyCardProjectCss
           onMouseEnter={() => setVisibleVideo(true)}
           onMouseLeave={() => setVisibleVideo(false)}
-          onClick={() => setProjectDetails(true)}
+          onClick={() => history.push(`/portfolio/${name}`)}
         >
           {imagesSwitch()}
           <ContainerTextCardCss>

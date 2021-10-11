@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import { useHistory } from 'react-router-dom';
 import rightArrow from '../images/rightArrow.png';
 import github from '../images/github-sign.png';
 import arrowLink from '../images/arrowLink.png';
@@ -111,8 +112,9 @@ const Link = styled.a`
 
 function ProjectDetails({
   project,
-  setProjectDetails,
+  // setProjectDetails,
 }) {
+  const history = useHistory();
   const {
     displayName,
     summary,
@@ -143,12 +145,12 @@ function ProjectDetails({
   return (
     <Div100porcento onClick={(e) => {
       if (e.currentTarget === e.target) {
-        setProjectDetails(false);
+        history.push('/portfolio');
       }
     }}
     >
       <ContainerProjectDetailsCss>
-        <ImageXCss onClick={() => setProjectDetails(false)} src={XImage} alt="close" />
+        <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
         <ContainerCarrosselCss>
           {images.length > 1 && (
             <>
