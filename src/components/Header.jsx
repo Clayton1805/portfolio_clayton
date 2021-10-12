@@ -3,7 +3,7 @@ import {
   useContext, useEffect, useRef, useState,
 } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { motion } from 'framer-motion';
 import { PortfolioContext } from '../context/PortfolioContext';
@@ -11,7 +11,7 @@ import { ContainerFlexWrapCss, ImgCss } from '../pages/About';
 import menu from '../images/menu.png';
 import { useOutsideEvent } from '../hooks/useOutsideEvent';
 
-// import linkedin from '../images/linkedin.png';
+// import linkedinHeader from '../images/linkedinHeader.png';
 // import gitHub from '../images/gitHub.png';
 
 const heightPx = 70;
@@ -74,11 +74,11 @@ const ButtonNavCss = styled(motion.button)`
   font-size: 1.5rem;
   color: rgb(248, 249, 250);
 
-  ${({ select }) => select && `
+  ${({ select }) => select && css`
     border-bottom: 4px solid rgba(0,0,0,0.2);
     border-top: 4px solid rgba(0,0,0,0.2);
   `}
-  ${({ mobile }) => mobile && `
+  ${({ mobile }) => mobile && css`
     width: 95%;
     margin: 15px 0px;
   `}
@@ -164,9 +164,9 @@ function BodyHeader({ children, imageClayton, redes }) {
           {redes && (
           <>
             {/* <a href="https://www.linkedin.com/in/claytonmiguel/" target="_ blank">
-              <img src={linkedin} alt="linkedin" />
-            </a>
-            <a href="https://github.com/Clayton1805" target="_ blank">
+              <img src={linkedinHeader} alt="linkedin" />
+            </a> */}
+            {/* <a href="https://github.com/Clayton1805" target="_ blank">
               <img src={gitHub} alt="gitHub" />
             </a> */}
           </>

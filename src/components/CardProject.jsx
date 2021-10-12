@@ -15,7 +15,7 @@ const BodyCardProjectCss = styled.div`
   box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
   cursor: pointer;
   :hover {
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0,0,0,.135);
   }
 `;
 

@@ -27,7 +27,7 @@ const ContainerProjectDetailsCss = styled(SimpleBar)`
   position: absolute;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: white;
+  background-color: rgb(248, 249, 250);
   outline: none;
   .simplebar-content-wrapper:focus {
     outline: none;
@@ -106,8 +106,13 @@ const ImageXCss = styled.img`
   width: 28px;
 `;
 
-const Link = styled.a`
-  margin: 5px;
+const ContainerNmaAndLinksCss = styled.a`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+  a {
+    padding: 5px 0px 5px 10px;
+  }
 `;
 
 function ProjectDetails({
@@ -180,22 +185,25 @@ function ProjectDetails({
 
         <ContainerContentCss>
 
-          <h1>{displayName}</h1>
-
-          <Link
-            href={githubUrl}
-            target="_ blank"
-          >
-            <img src={github} alt="github link" />
-          </Link>
-          {url && (
-            <Link
-              href={url}
-              target="_ blank"
-            >
-              <img src={arrowLink} alt="github link" />
-            </Link>
-          )}
+          <ContainerNmaAndLinksCss>
+            <h1>{displayName}</h1>
+            <div>
+              <a
+                href={githubUrl}
+                target="_ blank"
+              >
+                <img src={github} alt="github link" />
+              </a>
+              {url && (
+                <a
+                  href={url}
+                  target="_ blank"
+                >
+                  <img src={arrowLink} alt="github link" />
+                </a>
+              )}
+            </div>
+          </ContainerNmaAndLinksCss>
 
           {summary && (
             <>

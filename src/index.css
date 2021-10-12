@@ -10,6 +10,12 @@ body {
   /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; */
   /* font-family: FreeMono, monospace; */
   /* font-family: monospace; */
+  color: #616161;
+}
+
+h1, h2, h3, h4, h5, label {
+  color: #4C4C4C;
+  margin: 5px 0px;
 }
 
 code {

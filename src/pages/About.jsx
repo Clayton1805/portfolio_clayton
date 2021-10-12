@@ -21,7 +21,7 @@ const DivRedesCss = styled.div`
   display: flex;
   flex-flow: row nowrap;
   a {
-    margin: 0px 10px 0px 10px;
+    margin: 4px 20px 4px 0px;
   }
 `;
 
@@ -59,6 +59,17 @@ const ContainerSumaryCss = styled.div`
   margin: 15px;
 `;
 
+const NameCss = styled.h1`
+  color: #4C4C4C;
+  font-size: 2.5rem;
+  margin: 5px 0px;
+`;
+
+const SpanCss = styled.p`
+  font-size: 1.2rem;
+  margin: 5px 0px;
+`;
+
 export const About = () => {
   const {
     gitConnected,
@@ -85,11 +96,11 @@ export const About = () => {
             // }
             layoutId="clayton"
             src={image}
-            size={300}
+            size={290}
           />
           <ContainerSumaryCss>
-            <h1>{ name }</h1>
-            <p>{ headline }</p>
+            <NameCss>{ name }</NameCss>
+            <SpanCss>{ headline }</SpanCss>
             <DivRedesCss>
               <a
                 href={
