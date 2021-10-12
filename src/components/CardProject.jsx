@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-indent */
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageVideo, borderRadius, Img2Css } from './ImageVideo';
 import ProjectDetails from './ProjectDetails';
 
 // const width = `${400}px`;
 
-const BodyCardProjectCss = styled.div`
+const BodyCardProjectCss = styled(motion.div)`
   width: 100%;
   border-radius: ${borderRadius};
   border: 1px solid rgba(0,0,0,.125);
@@ -36,6 +36,15 @@ const ContainerTextCardCss = styled.div`
   text-align: justify;
 `;
 
+const LinkCss = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.text};
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
 function CardProject({
   project,
 }) {
@@ -46,7 +55,7 @@ function CardProject({
     summary,
     displayName,
   } = project;
-  const history = useHistory();
+  // const history = useHistory();
   const { id: idRoute } = useParams();
   const [visibleVideo, setVisibleVideo] = useState(false);
   // const [projectDetails, setProjectDetails] = useState(false);
@@ -95,23 +104,26 @@ function CardProject({
         <ProjectDetails project={project} />
       )}
       <DivWidthCss
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.9 }}
+        // whileTap={{ scale: 0.9 }}
         // transition={{ duration: 0.3 }}
+        // layoutId="project"
         variants={item}
         key={name}
       >
-        <BodyCardProjectCss
-          onMouseEnter={() => setVisibleVideo(true)}
-          onMouseLeave={() => setVisibleVideo(false)}
-          onClick={() => history.push(`/portfolio/${name}`)}
-        >
-          {imagesSwitch()}
-          <ContainerTextCardCss>
-            <h2>{displayName}</h2>
-            <p>{summary}</p>
-          </ContainerTextCardCss>
-        </BodyCardProjectCss>
+        <LinkCss to={`/portfolio/${name}`}>
+          <BodyCardProjectCss
+            onMouseEnter={() => setVisibleVideo(true)}
+            onMouseLeave={() => setVisibleVideo(false)}
+            whileHover={{ scale: 1.02 }}
+
+          >
+            {imagesSwitch()}
+            <ContainerTextCardCss>
+              <h2>{displayName}</h2>
+              <p>{summary}</p>
+            </ContainerTextCardCss>
+          </BodyCardProjectCss>
+        </LinkCss>
       </DivWidthCss>
     </>
   );

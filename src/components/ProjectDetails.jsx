@@ -23,16 +23,12 @@ const Div100porcento = styled.div`
   align-items: center;
 `;
 
-const ContainerProjectDetailsCss = styled(SimpleBar)`
+const ContainerProjectDetailsCss = styled.div`
   position: absolute;
   border: 1px solid black;
   border-radius: 5px;
   background-color: rgb(248, 249, 250);
-  outline: none;
-  .simplebar-content-wrapper:focus {
-    outline: none;
-  }
-  padding: 2px;
+  /* padding: 0px 1px 0px 1px; */
   margin: 2px;
   text-align: justify;
   @media (min-width: 800px) {
@@ -41,7 +37,19 @@ const ContainerProjectDetailsCss = styled(SimpleBar)`
   @media (max-width: 800px) {
     width: 98%;
   }
-  height: 98%;
+  height: 98.8%;
+`;
+
+const SimpleBarCss = styled(SimpleBar)`
+  border-radius: 5px;
+  outline: none;
+  .simplebar-content-wrapper:focus {
+    outline: none;
+  }
+  /* padding: 0px 1px 0px 1px; */
+  margin: 0px;
+  width: 100%;
+  height: 100%;
 `;
 
 const ContainerCarrosselCss = styled.div`
@@ -108,10 +116,11 @@ const ImageXCss = styled.img`
 
 const ContainerNmaAndLinksCss = styled.a`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 2px;
   a {
-    padding: 5px 0px 5px 10px;
+    padding: 5px;
   }
 `;
 
@@ -155,100 +164,102 @@ function ProjectDetails({
     }}
     >
       <ContainerProjectDetailsCss>
-        <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
-        <ContainerCarrosselCss>
-          {images.length > 1 && (
-            <>
-              <ContainerArrowCarrosselCss left>
-                <ImgArrowLeftCss
-                  src={rightArrow}
-                  onClick={() => carrosselChangePosition('left')}
-                  alt="seta para esquerda"
-                  aria-hidden
-                />
-              </ContainerArrowCarrosselCss>
-              <ContainerArrowCarrosselCss right>
-                <img
-                  src={rightArrow}
-                  onClick={() => carrosselChangePosition('right')}
-                  alt="seta para esquerda direita"
-                  aria-hidden
-                />
-              </ContainerArrowCarrosselCss>
-            </>
-          )}
-          <ImgCarrosselCss
-            src={images[carrosselPosition].resolutions.desktop.url}
-            alt="images project"
-          />
-        </ContainerCarrosselCss>
+        <SimpleBarCss>
+          <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
+          <ContainerCarrosselCss>
+            {images.length > 1 && (
+              <>
+                <ContainerArrowCarrosselCss left>
+                  <ImgArrowLeftCss
+                    src={rightArrow}
+                    onClick={() => carrosselChangePosition('left')}
+                    alt="seta para esquerda"
+                    aria-hidden
+                  />
+                </ContainerArrowCarrosselCss>
+                <ContainerArrowCarrosselCss right>
+                  <img
+                    src={rightArrow}
+                    onClick={() => carrosselChangePosition('right')}
+                    alt="seta para esquerda direita"
+                    aria-hidden
+                  />
+                </ContainerArrowCarrosselCss>
+              </>
+            )}
+            <ImgCarrosselCss
+              src={images[carrosselPosition].resolutions.desktop.url}
+              alt="images project"
+            />
+          </ContainerCarrosselCss>
 
-        <ContainerContentCss>
+          <ContainerContentCss>
 
-          <ContainerNmaAndLinksCss>
-            <h1>{displayName}</h1>
-            <div>
-              <a
-                href={githubUrl}
-                target="_ blank"
-              >
-                <img src={github} alt="github link" />
-              </a>
-              {url && (
+            <ContainerNmaAndLinksCss>
+              <h1>{displayName}</h1>
+              <div>
                 <a
-                  href={url}
+                  href={githubUrl}
                   target="_ blank"
                 >
-                  <img src={arrowLink} alt="github link" />
+                  <img src={github} alt="github link" />
                 </a>
+                {url && (
+                  <a
+                    href={url}
+                    target="_ blank"
+                  >
+                    <img src={arrowLink} alt="github link" />
+                  </a>
+                )}
+              </div>
+            </ContainerNmaAndLinksCss>
+
+            {summary && (
+              <>
+                <h2>Resumo</h2>
+                <p>{summary}</p>
+              </>
+            )}
+
+            <ContainerTechnologiesCss>
+              {languages.length > 0 && (
+                <ContainerLanguagesAndLibsCss>
+                  <h3>Linguagens</h3>
+                  <ContainerImgsTechnogiesCss>
+                    {languages.map((language) => (
+                      <ImgTechnologiesCss
+                        key={language}
+                        src={`https://img.shields.io/badge/-${language}-A9A9A9?logo=${language}&logoColor=ffffff`}
+                        alt="images project"
+                      />
+                    ))}
+                  </ContainerImgsTechnogiesCss>
+                </ContainerLanguagesAndLibsCss>
               )}
-            </div>
-          </ContainerNmaAndLinksCss>
-
-          {summary && (
-            <>
-              <h2>Resumo</h2>
-              <p>{summary}</p>
-            </>
-          )}
-
-          <ContainerTechnologiesCss>
-            {languages.length > 0 && (
-              <ContainerLanguagesAndLibsCss>
-                <h3>Linguagens</h3>
-                <ContainerImgsTechnogiesCss>
-                  {languages.map((language) => (
-                    <ImgTechnologiesCss
-                      key={language}
-                      src={`https://img.shields.io/badge/-${language}-A9A9A9?logo=${language}&logoColor=ffffff`}
-                      alt="images project"
-                    />
-                  ))}
-                </ContainerImgsTechnogiesCss>
-              </ContainerLanguagesAndLibsCss>
+              {libraries.length > 0 && (
+                <ContainerLanguagesAndLibsCss>
+                  <h3>Bibliotecas</h3>
+                  <div>
+                    {libraries.map((librarie) => (
+                      <ImgTechnologiesCss
+                        key={librarie}
+                        src={`https://img.shields.io/badge/-${librarie}-A9A9A9?logo=${librarie}&logoColor=ffffff`}
+                        alt="images project"
+                      />
+                    ))}
+                  </div>
+                </ContainerLanguagesAndLibsCss>
+              )}
+            </ContainerTechnologiesCss>
+            {description && (
+              <>
+                <h2>Detalhes do Projeto</h2>
+                <p>{description}</p>
+              </>
             )}
-            {libraries.length > 0 && (
-              <ContainerLanguagesAndLibsCss>
-                <h3>Bibliotecas</h3>
-                <div>
-                  {libraries.map((librarie) => (
-                    <ImgTechnologiesCss
-                      key={librarie}
-                      src={`https://img.shields.io/badge/-${librarie}-A9A9A9?logo=${librarie}&logoColor=ffffff`}
-                      alt="images project"
-                    />
-                  ))}
-                </div>
-              </ContainerLanguagesAndLibsCss>
-            )}
-          </ContainerTechnologiesCss>
-          {description && (
-            <>
-              <h2>Detalhes do Projeto</h2>
-              <p>{description}</p>
-            </>
-          )}
-        </ContainerContentCss>
+          </ContainerContentCss>
+        </SimpleBarCss>
       </ContainerProjectDetailsCss>
     </Div100porcento>
   );
