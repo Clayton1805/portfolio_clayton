@@ -18,7 +18,7 @@ function Portfolio() {
   } = useContext(PortfolioContext);
 
   return (
-    <BodyHeader>
+    <BodyHeader imageClayton redes>
 
       {gitConnected && (
       <Div1Css
@@ -35,7 +35,7 @@ function Portfolio() {
       >
         {gitConnected.projects
           .map((project) => (
-            <CardProject project={project} />
+            <CardProject key={project.name} project={project} />
           ))}
       </Div1Css>
       )}

@@ -1,14 +1,16 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-cycle */
 /* eslint-disable max-len */
 import styled from 'styled-components';
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
 import BodyHeader from '../components/Header';
 import linkedin from '../images/linkedin.png';
 import gitHub from '../images/gitHub.png';
 import whatsapp from '../images/whatsapp.png';
 import { PortfolioContext } from '../context/PortfolioContext';
 
-export const ImgCss = styled.img`
+export const ImgCss = styled(motion.img)`
   max-width: ${({ size }) => size}px;
   width: 100%;
   border-radius: 50%;
@@ -73,7 +75,18 @@ export const About = () => {
     return (
       <ContainerAboutCss>
         <ContainerFlexWrap2Css>
-          <ImgCss src={image} size={300} />
+          <ImgCss
+            // variants={
+            //   {
+            //     hidden: {
+            //       zIndex: 200,
+            //     },
+            //   }
+            // }
+            layoutId="clayton"
+            src={image}
+            size={300}
+          />
           <ContainerSumaryCss>
             <h1>{ name }</h1>
             <p>{ headline }</p>
@@ -103,10 +116,10 @@ export const About = () => {
           </ContainerSumaryCss>
         </ContainerFlexWrap2Css>
         {/* <TextSummaryCss dangerouslySetInnerHTML={{ __html: summary }} /> */}
-        {summary.split('\n').map((text) => (
-          <TextSummaryCss>
+        {summary.split('\n').map((text, index) => (
+          <TextSummaryCss key={index}>
             {
-              text.split('**').map((t, i) => ((i % 2 !== 0) ? <b>{t}</b> : t))
+              text.split('**').map((t, i) => ((i % 2 !== 0) ? <b key={i}>{t}</b> : t))
             }
           </TextSummaryCss>
         ))}

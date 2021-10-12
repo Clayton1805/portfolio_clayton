@@ -22,11 +22,11 @@ const BodyCardProjectCss = styled.div`
 const DivWidthCss = styled(motion.div)`
   margin: 8px 0px;
   padding: 0px 8px;
-  @media (min-width: ${751}px) {
+  @media (min-width: ${759}px) {
     min-width: 360px;
     width: 40%;
   }
-  @media (max-width: ${751}px) {
+  @media (max-width: ${759}px) {
     width: 100%;
   }
 `;

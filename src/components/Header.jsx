@@ -1,9 +1,13 @@
 /* eslint-disable import/no-cycle */
-import { useEffect, useRef, useState } from 'react';
+import {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { ContainerFlexWrapCss } from '../pages/About';
+import { motion } from 'framer-motion';
+import { PortfolioContext } from '../context/PortfolioContext';
+import { ContainerFlexWrapCss, ImgCss } from '../pages/About';
 import menu from '../images/menu.png';
 import { useOutsideEvent } from '../hooks/useOutsideEvent';
 
@@ -59,7 +63,7 @@ const ContainerNav = styled.div`
   margin-left: auto;
 `;
 
-const ButtonNavCss = styled.button`
+const ButtonNavCss = styled(motion.button)`
   background-color: transparent;
   :hover {
     outline: none;
@@ -85,7 +89,11 @@ const ImgButtonNavCss = styled.img`
   cursor: pointer;
 `;
 
-function BodyHeader({ children }) {
+function BodyHeader({ children, imageClayton, redes }) {
+  const {
+    gitConnected,
+  } = useContext(PortfolioContext);
+
   const history = useHistory();
   const location = useLocation();
   const path = location.pathname.split('/')[1];
@@ -108,6 +116,7 @@ function BodyHeader({ children }) {
       <ButtonNavCss
         mobile={mobile}
         select={path === 'apresentacao'}
+        // layoutId={(path === 'apresentacao') ? 'select' : ''}
         onClick={() => history.push('/apresentacao')}
         type="button"
       >
@@ -116,6 +125,7 @@ function BodyHeader({ children }) {
       <ButtonNavCss
         mobile={mobile}
         select={path === 'portfolio'}
+        // layoutId={(path === 'portfolio') ? 'select' : ''}
         onClick={() => history.push('/portfolio')}
         type="button"
       >
@@ -124,6 +134,7 @@ function BodyHeader({ children }) {
       <ButtonNavCss
         mobile={mobile}
         select={path === 'faleComigo'}
+        // layoutId={(path === 'faleComigo') ? 'select' : ''}
         onClick={() => history.push('/faleComigo')}
         type="button"
       >
@@ -136,13 +147,30 @@ function BodyHeader({ children }) {
     <DivSpaceCss>
       <HeaderContainerCss>
         <ContainerFlexWrapCss>
-          {/* <ImgCss size={40} /> */}
-          {/* <a href="https://www.linkedin.com/in/claytonmiguel/" target="_ blank">
-            <img src={linkedin} alt="linkedin" />
-          </a>
-          <a href="https://github.com/Clayton1805" target="_ blank">
-            <img src={gitHub} alt="gitHub" />
-          </a> */}
+          {(gitConnected && imageClayton) && (
+          <ImgCss
+            layoutId="clayton"
+            src={gitConnected.basics.image}
+            size={40}
+            // variants={
+            //   {
+            //     hidden: {
+            //       zIndex: 200,
+            //     },
+            //   }
+            // }
+          />
+          )}
+          {redes && (
+          <>
+            {/* <a href="https://www.linkedin.com/in/claytonmiguel/" target="_ blank">
+              <img src={linkedin} alt="linkedin" />
+            </a>
+            <a href="https://github.com/Clayton1805" target="_ blank">
+              <img src={gitHub} alt="gitHub" />
+            </a> */}
+          </>
+          )}
         </ContainerFlexWrapCss>
 
         <ContainerNav>
