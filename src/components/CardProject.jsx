@@ -94,7 +94,13 @@ function CardProject({
       {(idRoute === name) && (
         <ProjectDetails project={project} />
       )}
-      <DivWidthCss variants={item} key={name}>
+      <DivWidthCss
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.9 }}
+        // transition={{ duration: 0.3 }}
+        variants={item}
+        key={name}
+      >
         <BodyCardProjectCss
           onMouseEnter={() => setVisibleVideo(true)}
           onMouseLeave={() => setVisibleVideo(false)}
