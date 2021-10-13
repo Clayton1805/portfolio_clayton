@@ -90,24 +90,19 @@ function CardProject({
     }
   };
 
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
     <>
       {(idRoute === name) && (
         <ProjectDetails project={project} />
       )}
       <DivWidthCss
-        // whileTap={{ scale: 0.9 }}
-        // transition={{ duration: 0.3 }}
-        // layoutId="project"
-        variants={item}
+        variants={{
+          hidden: { y: 20, opacity: 0 },
+          visible: {
+            y: 0,
+            opacity: 1,
+          },
+        }}
         key={name}
       >
         <LinkCss to={`/portfolio/${name}`}>
@@ -115,7 +110,6 @@ function CardProject({
             onMouseEnter={() => setVisibleVideo(true)}
             onMouseLeave={() => setVisibleVideo(false)}
             whileHover={{ scale: 1.02 }}
-
           >
             {imagesSwitch()}
             <ContainerTextCardCss>

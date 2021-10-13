@@ -30,6 +30,7 @@ function Portfolio() {
             },
           },
         }}
+        // transition={{ duration: 0.25 }}
         initial="hidden"
         animate="visible"
       >

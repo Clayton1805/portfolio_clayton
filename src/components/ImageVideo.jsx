@@ -11,7 +11,7 @@ const GifCss = styled(motion.img)`
   z-index: 50;
 `;
 
-export const Img2Css = styled.img`
+export const Img2Css = styled(motion.img)`
   width: 100%;
   border-radius: ${borderRadius};
 `;
@@ -21,7 +21,9 @@ const DivCss = styled.div`
   width: 100%;
 `;
 
-export const ImageVideo = ({ isVisibleVideo, img, video }) => (
+export const ImageVideo = ({
+  isVisibleVideo, img, video,
+}) => (
   <DivCss>
     <Img2Css src={img} />
     <AnimatePresence>
