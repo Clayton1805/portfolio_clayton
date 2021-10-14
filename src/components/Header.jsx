@@ -73,7 +73,7 @@ const ButtonNavCss = styled(motion.button)`
   margin: 0px 7px;
   font-size: 1.5rem;
   color: rgb(248, 249, 250);
-
+  cursor: pointer;
   ${({ select }) => select && css`
     border-bottom: 4px solid rgba(0,0,0,0.2);
     border-top: 4px solid rgba(0,0,0,0.2);
