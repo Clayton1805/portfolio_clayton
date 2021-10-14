@@ -144,8 +144,8 @@ export const About = () => {
                 opacity: 1,
                 transition: {
                   opacity: {
-                    delay: 0.3,
-                    duration: 0.3,
+                    delay: 0.4,
+                    duration: 0.4,
                   },
                 },
               },
@@ -187,8 +187,8 @@ export const About = () => {
               opacity: 1,
               transition: {
                 opacity: {
-                  delay: 0.6,
-                  duration: 0.3,
+                  delay: 0.8,
+                  duration: 0.4,
                 },
               },
             },

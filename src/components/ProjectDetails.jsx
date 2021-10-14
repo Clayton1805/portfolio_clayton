@@ -8,11 +8,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 // import { SuspenseImg } from '../hooks/imageSuspense';
 
 import rightArrow from '../images/rightArrow.png';
-import github from '../images/github-sign.png';
-import arrowLink from '../images/arrowLink.png';
+// import github from '../images/github-sign.png';
+// import arrowLink from '../images/arrowLink.png';
 import XImage from '../images/X.png';
 
 import 'simplebar-react/dist/simplebar.min.css';
+import { colorsTechnology } from '../utius/colorsTechnology';
 
 const Div100porcento = styled.div`
   width: 100%;
@@ -158,8 +159,8 @@ function ProjectDetails({
     images,
     languages,
     libraries,
-    githubUrl,
-    url,
+    // githubUrl,
+    // url,
   } = project;
 
   const [carrosselPosition, setCarrosselPosition] = useState(0);
@@ -185,7 +186,7 @@ function ProjectDetails({
   };
 
   useEffect(() => {
-    carrosselChangePosition();
+    if (directionArrow.count !== 0) carrosselChangePosition();
   }, [directionArrow]);
 
   const isDirectionLeft = directionArrow.direction === 'left';
@@ -264,7 +265,7 @@ function ProjectDetails({
               <ContainerNmaAndLinksCss>
                 <h1>{displayName}</h1>
                 <div>
-                  <a
+                  {/* <a
                     href={githubUrl}
                     target="_ blank"
                   >
@@ -277,7 +278,7 @@ function ProjectDetails({
                     >
                       <img src={arrowLink} alt="github link" />
                     </a>
-                  )}
+                  )} */}
                 </div>
               </ContainerNmaAndLinksCss>
 
@@ -296,7 +297,7 @@ function ProjectDetails({
                       {languages.map((language) => (
                         <ImgTechnologiesCss
                           key={language}
-                          src={`https://img.shields.io/badge/-${language}-A9A9A9?logo=${language}&logoColor=ffffff`}
+                          src={`https://img.shields.io/badge/-${language}-${colorsTechnology(language)}?logo=${language}&logoColor=ffffff`}
                           alt="images project"
                         />
                       ))}
@@ -310,7 +311,7 @@ function ProjectDetails({
                       {libraries.map((librarie) => (
                         <ImgTechnologiesCss
                           key={librarie}
-                          src={`https://img.shields.io/badge/-${librarie}-A9A9A9?logo=${librarie}&logoColor=ffffff`}
+                          src={`https://img.shields.io/badge/-${librarie}-${colorsTechnology(librarie)}?logo=${librarie}&logoColor=ffffff`}
                           alt="images project"
                         />
                       ))}

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { colorsTechnology } from '../utius/colorsTechnology';
 import { ImageVideo, borderRadius, Img2Css } from './ImageVideo';
 import ProjectDetails from './ProjectDetails';
 
@@ -45,6 +46,16 @@ const LinkCss = styled(Link)`
   }
 `;
 
+const ContainerTecImgCss = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const ImgTechnologiesCss = styled.img`
+  border-radius: 3px;
+  margin: 3px 6px 3px 0px;
+`;
+
 function CardProject({
   project,
 }) {
@@ -54,6 +65,8 @@ function CardProject({
     images,
     summary,
     displayName,
+    languages,
+    libraries,
   } = project;
   // const history = useHistory();
   const { id: idRoute } = useParams();
@@ -114,6 +127,15 @@ function CardProject({
             {imagesSwitch()}
             <ContainerTextCardCss>
               <h2>{displayName}</h2>
+              <ContainerTecImgCss>
+                {(libraries.length ? libraries : languages).map((language) => (
+                  <ImgTechnologiesCss
+                    key={language}
+                    src={`https://img.shields.io/badge/-${language}-${colorsTechnology(language)}?logo=${language}&logoColor=ffffff`}
+                    alt="images project"
+                  />
+                ))}
+              </ContainerTecImgCss>
               <p>{summary}</p>
             </ContainerTextCardCss>
           </BodyCardProjectCss>

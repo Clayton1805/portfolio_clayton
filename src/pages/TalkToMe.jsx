@@ -85,7 +85,7 @@ function TalkToMe() {
   };
 
   return (
-    <BodyHeader>
+    <BodyHeader imageClayton>
       <Div>
         <FormFlexColumnCss ref={form} onSubmit={sendEmail}>
           <LabelCss htmlFor="name">
