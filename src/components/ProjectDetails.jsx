@@ -8,8 +8,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 // import { SuspenseImg } from '../hooks/imageSuspense';
 
 import rightArrow from '../images/rightArrow.png';
-// import github from '../images/github-sign.png';
-// import arrowLink from '../images/arrowLink.png';
+import github from '../images/github-sign.png';
+import arrowLink from '../images/arrowLink.png';
 import XImage from '../images/X.png';
 
 import 'simplebar-react/dist/simplebar.min.css';
@@ -159,8 +159,8 @@ function ProjectDetails({
     images,
     languages,
     libraries,
-    // githubUrl,
-    // url,
+    githubUrl,
+    url,
   } = project;
 
   const [carrosselPosition, setCarrosselPosition] = useState(0);
@@ -263,7 +263,7 @@ function ProjectDetails({
               <ContainerNmaAndLinksCss>
                 <h1>{displayName}</h1>
                 <div>
-                  {/* <a
+                  <a
                     href={githubUrl}
                     target="_ blank"
                   >
@@ -276,7 +276,7 @@ function ProjectDetails({
                     >
                       <img src={arrowLink} alt="github link" />
                     </a>
-                  )} */}
+                  )}
                 </div>
               </ContainerNmaAndLinksCss>
 
