@@ -54,7 +54,7 @@ const TextSummaryCss = styled.p`
   /* padding: 0px 10px; */
 `;
 
-const ContainerSumaryCss = styled.div`
+const ContainerSumaryCss = styled(motion.div)`
   align-self: center;
   margin: 15px;
 `;
@@ -69,6 +69,8 @@ const SpanCss = styled.p`
   font-size: 1.2rem;
   margin: 5px 0px;
 `;
+
+// const CICss = styled(motion.div)``;
 
 export const About = () => {
   const {
@@ -86,19 +88,71 @@ export const About = () => {
     return (
       <ContainerAboutCss>
         <ContainerFlexWrap2Css>
+          {/* <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              // hidden: { opacity: 0 },
+              // visible: {
+              //   opacity: 1,
+              //   // transition: {
+              //   //   opacity: {
+              //   //     delay: 0.5,
+              //   //   },
+              //   // },
+              // },
+            }}
+          > */}
           <ImgCss
-            // variants={
-            //   {
-            //     hidden: {
-            //       zIndex: 200,
-            //     },
-            //   }
-            // }
+                // variants={
+                //   {
+                //     hidden: {
+                //       zIndex: 200,
+                //     },
+                //   }
+                // }
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.6 }}
+            variants={{
+              hidden: {
+                zIndex: 101,
+                opacity: 0,
+              },
+              visible: {
+                zIndex: 'auto',
+                opacity: 1,
+                transition: {
+                  zIndex: {
+                    delay: 0.5,
+                  },
+                  opacity: {
+                    duration: 0.3,
+                  },
+                },
+              },
+            }}
             layoutId="clayton"
             src={image}
             size={290}
           />
-          <ContainerSumaryCss>
+          {/* </motion.div> */}
+          <ContainerSumaryCss
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  opacity: {
+                    delay: 0.3,
+                    duration: 0.3,
+                  },
+                },
+              },
+            }}
+            initial="hidden"
+            animate="visible"
+          >
             <NameCss>{ name }</NameCss>
             <SpanCss>{ headline }</SpanCss>
             <DivRedesCss>
@@ -126,14 +180,30 @@ export const About = () => {
             </DivRedesCss>
           </ContainerSumaryCss>
         </ContainerFlexWrap2Css>
-        {/* <TextSummaryCss dangerouslySetInnerHTML={{ __html: summary }} /> */}
-        {summary.split('\n').map((text, index) => (
-          <TextSummaryCss key={index}>
-            {
-              text.split('**').map((t, i) => ((i % 2 !== 0) ? <b key={i}>{t}</b> : t))
-            }
-          </TextSummaryCss>
-        ))}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                opacity: {
+                  delay: 0.6,
+                  duration: 0.3,
+                },
+              },
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+        >
+          {summary.split('\n').map((text, index) => (
+            <TextSummaryCss key={index}>
+              {
+                text.split('**').map((t, i) => ((i % 2 !== 0) ? <b key={i}>{t}</b> : t))
+              }
+            </TextSummaryCss>
+          ))}
+        </motion.div>
       </ContainerAboutCss>
     );
   };

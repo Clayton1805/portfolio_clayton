@@ -152,6 +152,7 @@ function BodyHeader({ children, imageClayton, redes }) {
             layoutId="clayton"
             src={gitConnected.basics.image}
             size={40}
+            // transition={{ duration: 0.3 }}
             // variants={
             //   {
             //     hidden: {

@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-indent */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SimpleBar from 'simplebar-react';
 import { useHistory } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // import { SuspenseImg } from '../hooks/imageSuspense';
 
@@ -124,7 +124,7 @@ const ContainerNmaAndLinksCss = styled.a`
   }
 `;
 
-const ImgCarrosselCss = styled.img`
+const ImgCarrosselCss = styled(motion.img)`
   width: 100%;
   max-width: 800px;
   position: absolute;
@@ -163,6 +163,7 @@ function ProjectDetails({
   } = project;
 
   const [carrosselPosition, setCarrosselPosition] = useState(0);
+  const [directionArrow, setDirectionArrow] = useState({ direction: 'right', count: 0 });
 
   const imagesRange = (n) => {
     const imgLength = images.length - 1;
@@ -171,12 +172,23 @@ function ProjectDetails({
     return n;
   };
 
-  const carrosselChangePosition = (direction) => {
+  const carrosselChangePosition = () => {
+    console.log('oi pp');
     let position = 0;
-    if (direction === 'left') position = imagesRange(carrosselPosition - 1);
-    if (direction === 'right') position = imagesRange(carrosselPosition + 1);
+    if (directionArrow.direction === 'left') position = imagesRange(carrosselPosition - 1);
+    if (directionArrow.direction === 'right') position = imagesRange(carrosselPosition + 1);
     setCarrosselPosition(position);
   };
+
+  const updateDirection = (direction) => {
+    setDirectionArrow(({ count }) => ({ count: (count + 1), direction }));
+  };
+
+  useEffect(() => {
+    carrosselChangePosition();
+  }, [directionArrow]);
+
+  const isDirectionLeft = directionArrow.direction === 'left';
 
   return (
     <Div100porcento onClick={(e) => {
@@ -208,7 +220,7 @@ function ProjectDetails({
                   <ContainerArrowCarrosselCss left>
                     <ImgArrowLeftCss
                       src={rightArrow}
-                      onClick={() => carrosselChangePosition('left')}
+                      onClick={() => updateDirection('left')}
                       alt="seta para esquerda"
                       aria-hidden
                     />
@@ -216,7 +228,7 @@ function ProjectDetails({
                   <ContainerArrowCarrosselCss right>
                     <img
                       src={rightArrow}
-                      onClick={() => carrosselChangePosition('right')}
+                      onClick={() => updateDirection('right')}
                       alt="seta para esquerda direita"
                       aria-hidden
                     />
@@ -225,11 +237,23 @@ function ProjectDetails({
               )}
               {/* colocar uma animation na foto para ver se o problema do atraso
                 de renderização some */ }
-              <ImgCarrosselCss
-                key={carrosselPosition}
-                src={images[carrosselPosition].resolutions.desktop.url}
-                alt="images project"
-              />
+              <AnimatePresence>
+                <ImgCarrosselCss
+                  key={carrosselPosition}
+                  src={images[carrosselPosition].resolutions.desktop.url}
+                  alt="images project"
+                  // animate={{ x: 20 }}
+                  exit={{ opacity: 0, x: (isDirectionLeft ? '-50vw' : '50vw') }}
+                  initial={{ opacity: 1, x: (isDirectionLeft ? '99vw' : '-99vw') }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  // hidden: { y: 20, opacity: 0 },
+                  //   visible: {
+                  //     y: 0,
+                  //     opacity: 1,
+                  //   },
+                />
+              </AnimatePresence>
               <CCss>
                 <SCss />
               </CCss>
