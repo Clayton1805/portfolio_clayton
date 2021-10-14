@@ -236,8 +236,6 @@ function ProjectDetails({
                   </ContainerArrowCarrosselCss>
                 </>
               )}
-              {/* colocar uma animation na foto para ver se o problema do atraso
-                de renderização some */ }
               <AnimatePresence>
                 <ImgCarrosselCss
                   key={carrosselPosition}
@@ -247,7 +245,7 @@ function ProjectDetails({
                   exit={{ opacity: 0, x: (isDirectionLeft ? '-50vw' : '50vw') }}
                   initial={{ opacity: 1, x: (isDirectionLeft ? '99vw' : '-99vw') }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
                   // hidden: { y: 20, opacity: 0 },
                   //   visible: {
                   //     y: 0,
@@ -307,7 +305,7 @@ function ProjectDetails({
                 {libraries.length > 0 && (
                   <ContainerLanguagesAndLibsCss>
                     <h3>Bibliotecas</h3>
-                    <div>
+                    <ContainerImgsTechnogiesCss>
                       {libraries.map((librarie) => (
                         <ImgTechnologiesCss
                           key={librarie}
@@ -315,7 +313,7 @@ function ProjectDetails({
                           alt="images project"
                         />
                       ))}
-                    </div>
+                    </ContainerImgsTechnogiesCss>
                   </ContainerLanguagesAndLibsCss>
                 )}
               </ContainerTechnologiesCss>

@@ -129,7 +129,7 @@ function BodyHeader({ children, imageClayton, redes }) {
         onClick={() => history.push('/portfolio')}
         type="button"
       >
-        Portfolio
+        Portfólio
       </ButtonNavCss>
       <ButtonNavCss
         mobile={mobile}
