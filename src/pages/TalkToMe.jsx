@@ -11,6 +11,7 @@ const FormFlexColumnCss = styled.form`
   align-items: center;
   align-content: center;
   /* width: 100%; */
+  flex-grow: 1;
 `;
 
 const InputTextCss = styled.input`
@@ -65,8 +66,18 @@ const LabelCss = styled.label`
   text-align: center;
 `;
 
-const Div = styled.div`
-  width: 100%;
+const DivCss = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+`;
+
+const ContainerTextCss = styled.div`
+  flex-grow: 1;
+  p {
+    margin: 5px;
+  }
 `;
 
 function TalkToMe() {
@@ -86,7 +97,10 @@ function TalkToMe() {
 
   return (
     <BodyHeader imageClayton>
-      <Div>
+      <DivCss>
+        <ContainerTextCss>
+          <p>ola</p>
+        </ContainerTextCss>
         <FormFlexColumnCss ref={form} onSubmit={sendEmail}>
           <LabelCss htmlFor="name">
             Nome
@@ -112,7 +126,7 @@ function TalkToMe() {
           <TextareaCss id="message" name="message" />
           <InputSubmitCss type="submit" value="Enviar" />
         </FormFlexColumnCss>
-      </Div>
+      </DivCss>
     </BodyHeader>
   );
 }
