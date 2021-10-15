@@ -23,6 +23,10 @@ export const colorsTechnology = (technology) => {
 
     case isTechnology('git'): return '%23F05032';
 
+    case isTechnology('socket.io'): return '1c1e21';
+
+    case isTechnology('sequelize'): return 'blue';
+
     default: return 'b0ecfc';
   }
 };
