@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import BodyHeader from '../components/Header';
 import linkedin from '../images/linkedin.png';
 import gitHub from '../images/gitHub.png';
-import whatsapp from '../images/whatsapp.png';
 import { PortfolioContext } from '../context/PortfolioContext';
 
 export const ImgCss = styled(motion.img)`
@@ -138,20 +137,9 @@ export const About = () => {
           />
           {/* </motion.div> */}
           <ContainerSumaryCss
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  opacity: {
-                    delay: 0.4,
-                    duration: 0.4,
-                  },
-                },
-              },
-            }}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <NameCss>{ name }</NameCss>
             <SpanCss>{ headline }</SpanCss>
@@ -174,9 +162,6 @@ export const About = () => {
               >
                 <img src={gitHub} alt="GitHub" />
               </a>
-              <a href="https://api.whatsapp.com/send?phone=551299670-4906" target="_ blank">
-                <img src={whatsapp} alt="whatsapp" />
-              </a>
             </DivRedesCss>
           </ContainerSumaryCss>
         </ContainerFlexWrap2Css>
@@ -188,7 +173,7 @@ export const About = () => {
               transition: {
                 opacity: {
                   delay: 0.8,
-                  duration: 0.4,
+                  duration: 0.6,
                 },
               },
             },

@@ -242,7 +242,7 @@ function ProjectDetails({
                   src={images[carrosselPosition].resolutions.desktop.url}
                   alt="images project"
                   // animate={{ x: 20 }}
-                  exit={{ opacity: 0, x: (isDirectionLeft ? '-50vw' : '50vw') }}
+                  exit={{ opacity: 0, x: (isDirectionLeft ? '-99vw' : '99vw') }}
                   initial={{ opacity: 1, x: (isDirectionLeft ? '99vw' : '-99vw') }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
