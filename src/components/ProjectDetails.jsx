@@ -11,6 +11,7 @@ import rightArrow from '../images/rightArrow.png';
 import github from '../images/github-sign.png';
 import arrowLink from '../images/arrowLink.png';
 import XImage from '../images/X.png';
+import defaultImg from '../images/defaultImg.jpg';
 
 import 'simplebar-react/dist/simplebar.min.css';
 import { colorsTechnology } from '../utius/colorsTechnology';
@@ -241,7 +242,7 @@ function ProjectDetails({
                   key={carrosselPosition}
                   src={
                     images.length === 0
-                      ? 'https://lh3.googleusercontent.com/yx72MH1bhMp0prosNz74FFStjmNcZPwget_xJdq7rAzWiexUgkACnwnqNOVwAiEgjEdicbP901X5JSlrK6jcpFpLgnEZXuckQOEiQZUtxoHveYJ1KBaQcswGlet_q6vs0_AGOr7ZSYHc-XLvCwwj-XxH5SdbJV02LrCawd-x0ievhyzH7HjDvrHqbmPUmZHqxQt13b9xPTlBPIge9P66DPA7jGHI0wVOLoHpnjdavoIpcv-tO8rRZy5xzCGKqJLvEnH74rtMA-_5bb4RMjcoOaLXUOjQTh5d74qcpzKg5hLtNRfRGYrEYr2smFSsbX16Mfk0ZIxBiUigUu53mpl1fuJDWxR-L-v_AGEg3DiSbIGyhT6yctuQR57OORqpHgrkc_HYG8xSYM6kyhHCq6kqPqyhE-UufgT6GmkNnec1I32DoxkfLDr1EYFiomUmhBzHDnVjWWVQU1vKcALwqsiTnw5jY1mNJDNMX6M1nF9SUMVs1gQjB-hC9jU7LaL-6SPZz20VG5-x0348slLqyQ2xRCWysOVPkgWzcTyNnC21z6sF7udXElhzz5u_iVR-6wYLDVMROui3eqjufYbbsrTl_LE3JRHzl-f9dRR1UH6GwEmGt5Gccr1lrWxOBZFNHGPkv5MyP0yKGbGX-CMIqZQIZhhk3YPYrb5M-421EV32R_IuqrT6_eEHG36AUidP5LKLIJJNJ1ryHvgN9-fnIXR-a2io=w983-h614-no?authuser=0'
+                      ? defaultImg
                       : images[carrosselPosition].resolutions.desktop.url
                   }
                   alt="images project"
