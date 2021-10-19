@@ -216,7 +216,7 @@ function ProjectDetails({
         <ContainerProjectDetailsCss
           initial={{ scale: 0, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.15, delay: 0.15 }}
+          transition={{ duration: 0.25, delay: 0.095 }}
         >
           <SimpleBarCss>
             <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
