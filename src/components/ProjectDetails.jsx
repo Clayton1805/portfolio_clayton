@@ -213,7 +213,11 @@ function ProjectDetails({
       }}
       transition={{ duration: 0.15 }} */}
       {/* <Suspense fallback={<></>}> */}
-        <ContainerProjectDetailsCss>
+        <ContainerProjectDetailsCss
+          initial={{ scale: 0, opacity: 0.5 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.15, delay: 0.15 }}
+        >
           <SimpleBarCss>
             <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
             <ContainerCarrosselCss>

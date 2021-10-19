@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import styled from 'styled-components';
 import emailjs from 'emailjs-com';
 import { motion } from 'framer-motion';
@@ -101,6 +101,7 @@ const ContainerSpaceCss = styled.div`
 const ContainerColumCss = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const ContainerImgH1Css = styled.div`
@@ -112,6 +113,10 @@ const ContainerImgH1Css = styled.div`
   h1 {
     text-align: center;
   }
+`;
+
+const MessageErrorCss = styled.span`
+  color: red;
 `;
 
 const ContainerRedesCss = styled(motion.div)`
@@ -145,26 +150,32 @@ function TalkToMe() {
 
   const form = useRef();
 
+  const [messageError, setMessageError] = useState('');
+
   const sendEmail = (e) => {
     e.preventDefault();
-    let pai = true;
+    let allInputsFilled = true;
     const formChildren = form.current.children;
     for (let i = 0; i < formChildren.length; i += 1) {
       const element = formChildren[i];
       const { nodeName } = element;
       if ((nodeName === 'INPUT' || nodeName === 'TEXTAREA') && element.value === '') {
-        pai = false;
+        allInputsFilled = false;
       }
     }
-    // console.log('pai', pai);
-    if (pai) {
+    // console.log('allInputsFilled', allInputsFilled);
+    if (allInputsFilled) {
       emailjs.sendForm('service_chr2x1b', 'template_ozn033n', form.current, 'user_bEJlgdvwBdj1xIia2wuiT')
         .then((result) => {
           console.log(result.text);
+          setMessageError('');
           e.target.reset();
         }, (error) => {
           console.log(error.text);
+          setMessageError('Houve um erro no envio da mensagem');
         });
+    } else {
+      setMessageError('Todos os campos devem ser preenchidos');
     }
   };
 
@@ -289,6 +300,7 @@ function TalkToMe() {
               Mensagem
             </LabelCss>
             <TextareaCss id="message" name="message" />
+            <MessageErrorCss>{messageError}</MessageErrorCss>
             <InputButtonCss type="submit" value="Enviar">Enviar</InputButtonCss>
           </FormFlexColumnCss>
         </ContainerSpaceCss>
