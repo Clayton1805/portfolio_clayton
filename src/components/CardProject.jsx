@@ -26,11 +26,11 @@ const BodyCardProjectCss = styled(motion.div)`
 const DivWidthCss = styled(motion.div)`
   margin: 8px 0px;
   padding: 0px 8px;
-  @media (min-width: ${759}px) {
+  @media (min-width: ${766}px) {
     min-width: 360px;
     width: 40%;
   }
-  @media (max-width: ${759}px) {
+  @media (max-width: ${766}px) {
     width: 100%;
   }
 `;
@@ -131,7 +131,7 @@ function CardProject({
             <ContainerTextCardCss>
               <h2>{displayName}</h2>
               <ContainerTecImgCss>
-                {(libraries.length ? libraries : languages).map((language) => (
+                {[...libraries, ...languages].map((language) => (
                   <ImgTechnologiesCss
                     key={language}
                     src={`https://img.shields.io/badge/-${language}-${colorsTechnology(language)}?logo=${language}&logoColor=ffffff`}

@@ -254,7 +254,7 @@ function ProjectDetails({
                   exit={{ opacity: 0, x: (isDirectionLeft ? '-99vw' : '99vw') }}
                   initial={{ opacity: 1, x: (isDirectionLeft ? '99vw' : '-99vw') }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
                   // hidden: { y: 20, opacity: 0 },
                   //   visible: {
                   //     y: 0,
@@ -329,7 +329,7 @@ function ProjectDetails({
               {description && (
                 <>
                   <h2>Detalhes do Projeto</h2>
-                  <p>{description}</p>
+                  <p style={{ whiteSpace: 'pre-line' }}>{description}</p>
                 </>
               )}
             </ContainerContentCss>
