@@ -216,7 +216,7 @@ function TalkToMe() {
             <motion.h4
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               Me envie uma mensagem preenchendo o formulário a seguir
             </motion.h4>
@@ -276,7 +276,7 @@ function TalkToMe() {
             onSubmit={sendEmail}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
             <LabelCss htmlFor="name">
               Nome
