@@ -149,6 +149,14 @@ const CCss = styled.div`
   max-width: 800px;
 `;
 
+const SpanNumberPhotoCss = styled.span`
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  z-index: 200;
+  color: ${({ theme }) => theme.colors.title};
+`;
+
 function ProjectDetails({
   project,
 }) {
@@ -216,7 +224,7 @@ function ProjectDetails({
         <ContainerProjectDetailsCss
           initial={{ scale: 0, opacity: 0.5 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.25, delay: 0.095 }}
+          transition={{ duration: 0.22, delay: 0.2 }}
         >
           <SimpleBarCss>
             <ImageXCss onClick={() => history.push('/portfolio')} src={XImage} alt="close" />
@@ -239,6 +247,7 @@ function ProjectDetails({
                       aria-hidden
                     />
                   </ContainerArrowCarrosselCss>
+                  <SpanNumberPhotoCss>{`${carrosselPosition + 1}/${images.length}`}</SpanNumberPhotoCss>
                 </>
               )}
               <AnimatePresence>
@@ -251,10 +260,10 @@ function ProjectDetails({
                   }
                   alt="images project"
                   // animate={{ x: 20 }}
-                  exit={{ opacity: 0, x: (isDirectionLeft ? '-99vw' : '99vw') }}
+                  exit={{ opacity: 0, x: (isDirectionLeft ? '-80vw' : '80vw') }}
                   initial={{ opacity: 1, x: (isDirectionLeft ? '99vw' : '-99vw') }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
                   // hidden: { y: 20, opacity: 0 },
                   //   visible: {
                   //     y: 0,
