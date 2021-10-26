@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useContext, useRef, useState } from 'react';
+import {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import styled from 'styled-components';
 import emailjs from 'emailjs-com';
 import { motion } from 'framer-motion';
@@ -148,6 +150,8 @@ function TalkToMe() {
     gitConnected,
   } = useContext(PortfolioContext);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   const form = useRef();
 
   const [messageError, setMessageError] = useState('');
@@ -165,7 +169,12 @@ function TalkToMe() {
     }
     // console.log('allInputsFilled', allInputsFilled);
     if (allInputsFilled) {
-      emailjs.sendForm('service_chr2x1b', 'template_ozn033n', form.current, 'user_bEJlgdvwBdj1xIia2wuiT')
+      const {
+        REACT_APP_SERVICE_ID,
+        REACT_APP_TEMPLATE_ID,
+        REACT_APP_USER_ID,
+      } = process.env;
+      emailjs.sendForm(REACT_APP_SERVICE_ID, REACT_APP_TEMPLATE_ID, form.current, REACT_APP_USER_ID)
         .then((result) => {
           console.log(result.text);
           setMessageError('');
@@ -228,44 +237,29 @@ function TalkToMe() {
               <p>Se quiser me contactar de outras formas aqui estão minhas redes:</p>
               <p style={{ display: 'none' }}>{profiles[0].url}</p>
               <DivRedesCss>
-                <table>
-                  <tr>
-                    <td>
-                      <a
-                        href="mailto:claytonmiguel1805@gmail.com"
-                        target="_ blank"
-                      >
-                        <img src={gmail} alt="gmail" />
-                      </a>
-                    </td>
-                    <td><label>claytonmiguel1805@gmail.com</label></td>
-                  </tr>
-                </table>
-                <table>
-                  <tr>
-                    <td style={{ paddingTop: 10 }}>
-                      <a href="https://api.whatsapp.com/send?phone=551299670-4906" target="_ blank">
-                        <img src={whatsapp} alt="whatsapp" />
-                      </a>
-                    </td>
-                    <td style={{ paddingTop: 10 }}><label>+55 12996704906</label></td>
-                  </tr>
-                </table>
-                {/* <label>
-                  <a
-                    href="mailto:claytonmiguel1805@gmail.com"
-                    target="_ blank"
-                  >
-                    <img src={gmail} alt="gmail" />
-                  </a>
-                  claytonmiguel1805@gmail.com
-                </label>
-                <label>
-                  <a href="https://api.whatsapp.com/send?phone=551299670-4906" target="_ blank">
-                    <img src={whatsapp} alt="whatsapp" />
-                  </a>
-                  +55 12996704906
-                </label> */}
+                <div style={{ display: 'table' }}>
+                  <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                    <a
+                      href="mailto:claytonmiguel1805@gmail.com"
+                      target="_ blank"
+                    >
+                      <img src={gmail} alt="gmail" />
+                    </a>
+                  </div>
+                  <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                    <label>claytonmiguel1805@gmail.com</label>
+                  </div>
+                </div>
+                <div style={{ display: 'table' }}>
+                  <div style={{ display: 'table-cell', verticalAlign: 'middle', paddingTop: 10 }}>
+                    <a href="https://api.whatsapp.com/send?phone=551299670-4906" target="_ blank">
+                      <img src={whatsapp} alt="whatsapp" />
+                    </a>
+                  </div>
+                  <div style={{ display: 'table-cell', verticalAlign: 'middle', paddingTop: 10 }}>
+                    <label>+55 12996704906</label>
+                  </div>
+                </div>
               </DivRedesCss>
             </ContainerRedesCss>
           </ContainerColumCss>

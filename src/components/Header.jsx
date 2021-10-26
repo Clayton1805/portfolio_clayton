@@ -5,7 +5,7 @@ import {
 import { useHistory, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { PortfolioContext } from '../context/PortfolioContext';
 import { ContainerFlexWrapCss, ImgCss } from '../pages/About';
 import menu from '../images/menu.png';
@@ -33,7 +33,7 @@ const HeaderContainerCss = styled.header`
   z-index: 90;
 `;
 
-const ContainerNavMobileCss = styled.div`
+const ContainerNavMobileCss = styled(motion.div)`
   height: 100%;
   align-items: center;
   align-content: center;
@@ -187,11 +187,19 @@ function BodyHeader({ children, imageClayton, redes }) {
             )}
         </ContainerNav>
       </HeaderContainerCss>
-      {!isDesktop && navbar && (
-        <ContainerNavMobileCss ref={navMobile}>
-          <Nav mobile />
-        </ContainerNavMobileCss>
-      )}
+      <AnimatePresence>
+        {!isDesktop && navbar && (
+          <ContainerNavMobileCss
+            ref={navMobile}
+            initial={{ x: 170 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            exit={{ x: 170 }}
+          >
+            <Nav mobile />
+          </ContainerNavMobileCss>
+        )}
+      </AnimatePresence>
 
       {children}
     </DivSpaceCss>

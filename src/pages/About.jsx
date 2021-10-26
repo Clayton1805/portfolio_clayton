@@ -2,7 +2,7 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable max-len */
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import BodyHeader from '../components/Header';
 import linkedin from '../images/linkedin.png';
@@ -75,6 +75,8 @@ export const About = () => {
   const {
     gitConnected,
   } = useContext(PortfolioContext);
+
+  useEffect(() => window.scrollTo(0, 0), []);
 
   const container = () => {
     const {

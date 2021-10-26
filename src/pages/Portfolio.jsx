@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import CardProject from '../components/CardProject';
 import BodyHeader from '../components/Header';
@@ -16,6 +16,8 @@ function Portfolio() {
   const {
     gitConnected,
   } = useContext(PortfolioContext);
+
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
     <BodyHeader imageClayton redes>
