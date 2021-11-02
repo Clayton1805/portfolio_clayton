@@ -193,7 +193,7 @@ function BodyHeader({ children, imageClayton, redes }) {
             ref={navMobile}
             initial={{ x: 170 }}
             animate={{ x: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             exit={{ x: 170 }}
           >
             <Nav mobile />
