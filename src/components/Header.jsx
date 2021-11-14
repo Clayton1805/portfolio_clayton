@@ -109,7 +109,9 @@ function BodyHeader({ children, imageClayton, redes }) {
     window.matchMedia('(min-width: 768px)').addListener(handler);
   }, []);
 
-  useOutsideEvent([navMobile, buttonNav], setNavbar, false);
+  useOutsideEvent(
+    [navMobile, buttonNav], setNavbar, false,
+  );
 
   const Nav = ({ mobile }) => (
     <>
