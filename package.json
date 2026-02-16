@@ -1,6 +1,9 @@
 {
   "name": "portifolio_clayton",
   "version": "0.1.0",
+  "engines": {
+    "node": "24.x"
+  },
   "private": true,
   "dependencies": {
     "axios": "^0.21.4",
